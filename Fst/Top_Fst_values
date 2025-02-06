@@ -1,0 +1,139 @@
+#!/bin/bash
+
+#removes the header and sorts according to weighted Fst value
+
+echo "removing header and sorting data"
+
+LAB_NEN_1000_sort="LAB_NEN_1000_sort.txt"
+tail -n +2 LAB_NEN_win_1000.windowed.weir.fst | sort -k5,5nr > "$LAB_NEN_1000_sort"
+
+NEN_ODN_1000_sort="NEN_ODN_1000_sort.txt"
+tail -n +2 NEN_ODN_win_1000.windowed.weir.fst | sort -k5,5nr > "$NEN_ODN_1000_sort"
+
+LAB_ODN_1000_sort="LAB_ODN_1000_sort.txt"
+tail -n +2 LAB_ODN_win_1000.windowed.weir.fst | sort -k5,5nr > "$LAB_ODN_1000_sort"
+
+LAB_NEN_5000_sort="LAB_NEN_5000_sort.txt"
+tail -n +2 LAB_NEN_win_5000.windowed.weir.fst | sort -k5,5nr > "$LAB_NEN_5000_sort"
+
+NEN_ODN_5000_sort="NEN_ODN_5000_sort.txt"
+tail -n +2 NEN_ODN_win_5000.windowed.weir.fst | sort -k5,5nr > "$NEN_ODN_5000_sort"
+
+LAB_ODN_5000_sort="LAB_ODN_5000_sort.txt"
+tail -n +2 LAB_ODN_win_5000.windowed.weir.fst | sort -k5,5nr > "$LAB_ODN_5000_sort"
+
+echo "counting 1% of data"
+
+#count 1% of lines in files
+
+#count total lines
+
+#1000
+
+LAB_NEN_1000_total_lines=$(wc -l < LAB_NEN_win_1000.windowed.weir.fst)
+
+NEN_ODN_1000_total_lines=$(wc -l < NEN_ODN_win_1000.windowed.weir.fst)
+
+LAB_ODN_1000_total_lines=$(wc -l < LAB_ODN_win_1000.windowed.weir.fst)
+
+#5000
+
+LAB_NEN_5000_total_lines=$(wc -l < LAB_NEN_win_5000.windowed.weir.fst)
+
+NEN_ODN_5000_total_lines=$(wc -l < NEN_ODN_win_5000.windowed.weir.fst)
+
+LAB_ODN_5000_total_lines=$(wc -l < LAB_ODN_win_5000.windowed.weir.fst)
+
+
+#total lines minus header
+
+#1000
+
+LAB_NEN_1000_data_lines=$((LAB_NEN_1000_total_lines -1))
+
+NEN_ODN_1000_data_lines=$((LAB_NEN_1000_total_lines -1))
+
+LAB_ODN_1000_data_lines=$((LAB_NEN_1000_total_lines -1))
+
+#5000
+
+LAB_NEN_5000_data_lines=$((LAB_NEN_5000_total_lines -1))
+
+NEN_ODN_5000_data_lines=$((LAB_NEN_5000_total_lines -1))
+
+LAB_ODN_5000_data_lines=$((LAB_NEN_5000_total_lines -1))
+
+
+#1% of lines
+
+#1000
+
+LAB_NEN_1000_1=$(($LAB_NEN_1000_data_lines / 100))
+
+NEN_ODN_1000_1=$(($NEN_ODN_1000_data_lines / 100))
+
+LAB_ODN_1000_1=$(($LAB_ODN_1000_data_lines / 100))
+
+#5000
+
+LAB_NEN_5000_1=$(($LAB_NEN_5000_data_lines / 100))
+
+NEN_ODN_5000_1=$(($NEN_ODN_5000_data_lines / 100))
+
+LAB_ODN_5000_1=$(($LAB_ODN_5000_data_lines / 100))
+
+
+echo "listing top 1% of results"
+
+#listing the top 1% of results
+
+#1000 windows
+
+{
+head -n 1 LAB_NEN_win_1000.windowed.weir.fst 
+head -n "$LAB_NEN_1000_1" $LAB_NEN_1000_sort
+} > LAB_NEN_1000_top.txt
+
+{
+head -n 1 NEN_ODN_win_1000.windowed.weir.fst 
+head -n "$NEN_ODN_1000_1" $NEN_ODN_1000_sort
+} > NEN_ODN_1000_top.txt
+
+{
+head -n 1 LAB_ODN_win_1000.windowed.weir.fst 
+head -n "$LAB_ODN_1000_1" $LAB_ODN_1000_sort
+} > LAB_ODN_1000_top.txt
+
+#5000 windows
+
+{
+head -n 1 LAB_NEN_win_5000.windowed.weir.fst 
+head -n "$LAB_NEN_5000_1" $LAB_NEN_5000_sort
+} > LAB_NEN_5000_top.txt
+
+{
+head -n 1 NEN_ODN_win_5000.windowed.weir.fst 
+head -n "$NEN_ODN_5000_1" $NEN_ODN_5000_sort
+} > NEN_ODN_5000_top.txt
+
+{
+head -n 1 LAB_ODN_win_5000.windowed.weir.fst 
+head -n "$LAB_ODN_5000_1" $LAB_ODN_5000_sort
+} > LAB_ODN_5000_top.txt
+
+
+#remove temporary files
+
+rm LAB_NEN_1000_sort.txt
+
+rm NEN_ODN_1000_sort.txt
+
+rm LAB_ODN_1000_sort.txt
+
+rm LAB_NEN_5000_sort.txt
+
+rm NEN_ODN_5000_sort.txt
+
+rm LAB_ODN_5000_sort.txt
+
+exit

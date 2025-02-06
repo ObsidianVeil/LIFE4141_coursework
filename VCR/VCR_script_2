@@ -1,0 +1,15 @@
+#!/bin/bash
+
+conda init
+
+conda activate VCFtools_env
+
+winsize=5000
+
+vcftools --gzvcf LAB_NEN_ODN.clean_BI.ann.3mbChr5.vcf.gz --out LAB_ODN_win_$winsize --max-missing 0.8 --maf 0.05 --weir-fst-pop LAB_population.txt --weir-fst-pop ODN_population.txt --fst-window-size $winsize --fst-window-step $winsize
+
+vcftools --gzvcf LAB_NEN_ODN.clean_BI.ann.3mbChr5.vcf.gz --out LAB_NEN_win_$winsize --max-missing 0.8 --maf 0.05 --weir-fst-pop LAB_population.txt --weir-fst-pop NEN_population.txt --fst-window-size $winsize --fst-window-step $winsize
+
+vcftools --gzvcf LAB_NEN_ODN.clean_BI.ann.3mbChr5.vcf.gz --out NEN_ODN_win_$winsize --max-missing 0.8 --maf 0.05 --weir-fst-pop NEN_population.txt --weir-fst-pop ODN_population.txt --fst-window-size $winsize --fst-window-step $winsize
+
+conda deactivate
