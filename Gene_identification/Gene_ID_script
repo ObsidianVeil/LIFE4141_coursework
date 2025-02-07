@@ -4,7 +4,7 @@ source "$(conda info --base)/etc/profile.d/conda.sh"
 
 conda activate bedtools_env
 
-bedtools intersect -header -wa -wb -a C_excelsa_V5_braker2_wRseq.gff3 \
+bedtools intersect -header -a C_excelsa_V5_braker2_wRseq.gff3 \
 	-b LAB_NEN_1000_top.bed LAB_ODN_1000_top.bed NEN_ODN_1000_top.bed LAB_NEN_5000_top.bed LAB_ODN_5000_top.bed NEN_ODN_5000_top.bed > Bedtools_output.bam
 
 conda deactivate
