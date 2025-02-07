@@ -1,6 +1,6 @@
 #!/bin/bash
 
-conda init
+source "$(conda info --base)/etc/profile.d/conda.sh"
 
 conda activate VCFtools_env
 
