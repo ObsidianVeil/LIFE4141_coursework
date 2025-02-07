@@ -5,13 +5,13 @@ source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate bedtools_env
 
 bedtools intersect -header -a C_excelsa_V5_braker2_wRseq.gff3 \
-	-b LAB_NEN_1000_top.bed LAB_NEN_5000_top.bed > LAB_NEN_Bedtools_output.bam
+	-b LAB_NEN_1000_top.bed LAB_NEN_5000_top.bed > LAB_NEN_Bedtools_output.txt
 
 bedtools intersect -header -a C_excelsa_V5_braker2_wRseq.gff3 \
-	-b NEN_ODN_1000_top.bed NEN_ODN_5000_top.bed > NEN_ODN_Bedtools_output.bam
+	-b NEN_ODN_1000_top.bed NEN_ODN_5000_top.bed > NEN_ODN_Bedtools_output.txt
 
 bedtools intersect -header -a C_excelsa_V5_braker2_wRseq.gff3 \
-	-b LAB_ODN_1000_top.bed LAB_ODN_5000_top.bed > LAB_ODN_Bedtools_output.bam
+	-b LAB_ODN_1000_top.bed LAB_ODN_5000_top.bed > LAB_ODN_Bedtools_output.txt
 
 
 conda deactivate
